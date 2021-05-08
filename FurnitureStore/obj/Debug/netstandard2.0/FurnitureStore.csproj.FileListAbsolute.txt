@@ -1,0 +1,15 @@
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\bin\Debug\netstandard2.0\FurnitureStore.deps.json
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\bin\Debug\netstandard2.0\FurnitureStore.dll
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\bin\Debug\netstandard2.0\ref\FurnitureStore.dll
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\bin\Debug\netstandard2.0\FurnitureStore.pdb
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\FurnitureStore.csprojAssemblyReference.cache
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\FurnitureStore.AssemblyInfoInputs.cache
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\FurnitureStore.AssemblyInfo.cs
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\FurnitureStore.csproj.CoreCompileInputs.cache
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\XamlC.stamp
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\FurnitureStore.dll
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\ref\FurnitureStore.dll
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\FurnitureStore.pdb
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\Page1.xaml.g.cs
