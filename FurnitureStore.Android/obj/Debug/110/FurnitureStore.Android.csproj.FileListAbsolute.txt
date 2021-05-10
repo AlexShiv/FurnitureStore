@@ -40,6 +40,11 @@ D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Deb
 D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\android\bin\base.zip
 D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\android\bin\com.companyname.furniturestore.aab
 D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\android\bin\com.companyname.furniturestore.apks
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\res\drawable\category.svg
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\res\drawable\mainlogo.svg
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\res\drawable\personalaccount.svg
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\res\drawable\promo.svg
+D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\res\drawable\shoppingcard.svg
 D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\res\values\styles.xml
 D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\res\values\colors.xml
 D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore.Android\obj\Debug\110\res\mipmap-anydpi-v26\icon.xml

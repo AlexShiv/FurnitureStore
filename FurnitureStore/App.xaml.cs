@@ -1,4 +1,5 @@
-﻿using FurnitureStore.model;
+﻿using System;
+using FurnitureStore.model;
 using FurnitureStore.repository;
 using Xamarin.Forms;
 
@@ -8,17 +9,25 @@ namespace FurnitureStore
     {
         public App()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            UserRepository.GetInstance();
-            PromoRepository.GetInstance();
-            CategoryRepository.GetInstance();
-            ShoppingCardRepository.GetInstance();
-            CityRepository.GetInstance();
-            AddressRepository.GetInstance();
-            FurnitureRepository.GetInstance();
+                UserRepository.GetInstance();
+                PromoRepository.GetInstance();
+                CategoryRepository.GetInstance();
+                ShoppingCardRepository.GetInstance();
+                CityRepository.GetInstance();
+                AddressRepository.GetInstance();
+                FurnitureRepository.GetInstance();
 
-            MainPage = new MainPage();
+                MainPage = new MainPage();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         protected override void OnStart()

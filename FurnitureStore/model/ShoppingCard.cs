@@ -9,7 +9,7 @@ namespace FurnitureStore.model
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }
 
-        [NotNull, Unique, ForeignKey(typeof(Furniture))] public int FurnitureId { get; set; }
+        [NotNull, ForeignKey(typeof(Furniture), Unique = true)] public int FurnitureId { get; set; }
         [NotNull] public int Count { get; set; }
 
         [OneToOne]

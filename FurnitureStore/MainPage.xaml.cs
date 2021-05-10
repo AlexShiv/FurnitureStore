@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FurnitureStore.view;
 using Xamarin.Forms;
 
 namespace FurnitureStore
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
         public MainPage()
         {
             InitializeComponent();
+
+            NavigationPage page = new NavigationPage(new PersonalAccount())
+            {
+                IconImageSource = ImageSource.FromFile("Promo.svg"),
+                Title = "qwqw"
+            };
+            Children.Add(page);
         }
     }
 }
