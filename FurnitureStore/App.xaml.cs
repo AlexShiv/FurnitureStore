@@ -1,6 +1,6 @@
-﻿using System;
+﻿using FurnitureStore.model;
+using FurnitureStore.repository;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace FurnitureStore
 {
@@ -9,6 +9,14 @@ namespace FurnitureStore
         public App()
         {
             InitializeComponent();
+
+            UserRepository.GetInstance();
+            PromoRepository.GetInstance();
+            CategoryRepository.GetInstance();
+            ShoppingCardRepository.GetInstance();
+            CityRepository.GetInstance();
+            AddressRepository.GetInstance();
+            FurnitureRepository.GetInstance();
 
             MainPage = new MainPage();
         }

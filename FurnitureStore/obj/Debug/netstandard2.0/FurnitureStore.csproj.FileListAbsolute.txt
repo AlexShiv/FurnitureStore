@@ -12,4 +12,3 @@ D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netst
 D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\FurnitureStore.dll
 D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\ref\FurnitureStore.dll
 D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\FurnitureStore.pdb
-D:\Projects\Xamarin\FurnitureStore\FurnitureStore\FurnitureStore\obj\Debug\netstandard2.0\Page1.xaml.g.cs
