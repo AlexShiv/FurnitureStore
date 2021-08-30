@@ -8,23 +8,23 @@
             Title="Hello"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
-            BackgroundColor="Aqua">
-    <NavigationPage Title="Акции" IconImageSource="Promo.svg" IconColor="Red">
+            >
+    <NavigationPage Title="Акции" IconImageSource="Promo.xml" Padding="20, 20, 20, 20">
         <x:Arguments>
-            <view:PromoView IconImageSource="Promo.svg"/>
+            <view:PromoView />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="Категории товаров" IconImageSource="Category.svg" IconColor="Red">
+    <NavigationPage Title="Категории товаров" IconImageSource="Category.xml">
         <x:Arguments>
             <view:CategoryView />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="Личный кабинет" IconImageSource="PersonalAccount.svg" IconColor="Red">
+    <NavigationPage Title="Личный кабинет" IconImageSource="PersonalAccount.xml">
         <x:Arguments>
             <view:PersonalAccount />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="Корзина" IconImageSource="ShoppingCard.svg" IconColor="Red">
+    <NavigationPage Title="Корзина" IconImageSource="ShoppingCard.xml">
         <x:Arguments>
             <view:ShoppingCardView />
         </x:Arguments>

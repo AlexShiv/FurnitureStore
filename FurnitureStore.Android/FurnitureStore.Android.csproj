@@ -69,11 +69,21 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Category.png" />
     <AndroidResource Include="Resources\drawable\Category.svg" />
+    <AndroidResource Include="Resources\drawable\Category.xml" />
+    <AndroidResource Include="Resources\drawable\MainLogo.png" />
     <AndroidResource Include="Resources\drawable\MainLogo.svg" />
+    <AndroidResource Include="Resources\drawable\MainLogo.xml" />
+    <AndroidResource Include="Resources\drawable\PersonalAccount.png" />
     <AndroidResource Include="Resources\drawable\PersonalAccount.svg" />
+    <AndroidResource Include="Resources\drawable\PersonalAccount.xml" />
+    <AndroidResource Include="Resources\drawable\Promo.png" />
     <AndroidResource Include="Resources\drawable\Promo.svg" />
+    <AndroidResource Include="Resources\drawable\Promo.xml" />
+    <AndroidResource Include="Resources\drawable\ShoppingCard.png" />
     <AndroidResource Include="Resources\drawable\ShoppingCard.svg" />
+    <AndroidResource Include="Resources\drawable\ShoppingCard.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />

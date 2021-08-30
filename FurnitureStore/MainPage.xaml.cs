@@ -8,13 +8,6 @@ namespace FurnitureStore
         public MainPage()
         {
             InitializeComponent();
-
-            NavigationPage page = new NavigationPage(new PersonalAccount())
-            {
-                IconImageSource = ImageSource.FromFile("Promo.svg"),
-                Title = "qwqw"
-            };
-            Children.Add(page);
         }
     }
 }
