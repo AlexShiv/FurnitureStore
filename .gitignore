@@ -194,3 +194,9 @@ FakesAssemblies/
 
 .vscode/settings.json
 FurnitureStore.Android/obj/
+
+FurnitureStore/bin/
+
+FurnitureStore/obj/
+
+FurnitureStore.Android/bin/

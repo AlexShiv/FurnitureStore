@@ -1,5 +1,4 @@
-﻿using FurnitureStore.view;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace FurnitureStore
 {

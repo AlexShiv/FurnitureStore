@@ -3,27 +3,30 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="FurnitureStore.MainPage"
-            xmlns:view="clr-namespace:FurnitureStore.view;assembly=FurnitureStore" 
+            xmlns:view="clr-namespace:FurnitureStore.view;assembly=FurnitureStore"
             xmlns:furniturestore="clr-namespace:FurnitureStore" x:DataType="furniturestore:MainPage"
             Title="Hello"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            android:TabbedPage.ToolbarPlacement="Bottom"
-            >
-    <NavigationPage Title="Акции" IconImageSource="Promo.xml" Padding="20, 20, 20, 20">
+            android:TabbedPage.ToolbarPlacement="Bottom">
+    
+    <NavigationPage Title="Акции" IconImageSource="Promo.xml">
         <x:Arguments>
             <view:PromoView />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="Категории товаров" IconImageSource="Category.xml">
+
+    <NavigationPage Title="Категории" IconImageSource="Category.xml">
         <x:Arguments>
             <view:CategoryView />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="Личный кабинет" IconImageSource="PersonalAccount.xml">
+
+    <NavigationPage Title="Профиль" IconImageSource="PersonalAccount.xml">
         <x:Arguments>
             <view:PersonalAccount />
         </x:Arguments>
     </NavigationPage>
+
     <NavigationPage Title="Корзина" IconImageSource="ShoppingCard.xml">
         <x:Arguments>
             <view:ShoppingCardView />
