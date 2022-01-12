@@ -9,14 +9,13 @@ namespace FurnitureStore.repository
 {
     public class CategoryRepository
     {
-        readonly SQLiteConnection _db;
-
         private static CategoryRepository database;
+        private readonly SQLiteConnection _db;
 
         private CategoryRepository(string fileName)
         {
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            string path = Path.Combine(docPath, fileName);
+            var docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var path = Path.Combine(docPath, fileName);
             _db = new SQLiteConnection(path);
 
             _db.CreateTable<Category>();

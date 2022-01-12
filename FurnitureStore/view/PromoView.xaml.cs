@@ -13,17 +13,17 @@ namespace FurnitureStore.view
             var promoRepository = PromoRepository.GetInstance();
 
             var promo = promoRepository.Fetch();
-            Content = new StackLayout()
+            Content = new StackLayout
             {
                 Children =
                 {
-                    new ListView()
+                    new ListView
                     {
                         HasUnevenRows = true,
                         ItemsSource = promo,
                         ItemTemplate = new DataTemplate(() =>
                         {
-                            var nameLabel = new Label() { FontSize = 18 };
+                            var nameLabel = new Label { FontSize = 18 };
                             nameLabel.SetBinding(Label.TextProperty, "Name");
 
                             var descriptionLabel = new Label();

@@ -6,13 +6,16 @@ namespace FurnitureStore.model
     [Table("Furniture")]
     public class Furniture
     {
-        [PrimaryKey, AutoIncrement, Column("id")]
+        [PrimaryKey]
+        [AutoIncrement]
+        [Column("id")]
         public int Id { get; set; }
 
         [NotNull] public string Name { get; set; }
         [NotNull] public string Description { get; set; }
 
-        [NotNull, ForeignKey(typeof(Category))]
+        [NotNull]
+        [ForeignKey(typeof(Category))]
         public int CategoryId { get; set; }
 
         [NotNull] public double Length { get; set; }

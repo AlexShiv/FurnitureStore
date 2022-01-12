@@ -8,7 +8,7 @@
             Title="Hello"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom">
-    
+
     <NavigationPage Title="Акции" IconImageSource="Promo.xml">
         <x:Arguments>
             <view:PromoView />

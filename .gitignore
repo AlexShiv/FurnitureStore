@@ -200,3 +200,5 @@ FurnitureStore/bin/
 FurnitureStore/obj/
 
 FurnitureStore.Android/bin/
+
+.idea/

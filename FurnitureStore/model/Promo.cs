@@ -6,7 +6,9 @@ namespace FurnitureStore.model
     [Table("Promo")]
     public class Promo
     {
-        [PrimaryKey, AutoIncrement, Column("id")]
+        [PrimaryKey]
+        [AutoIncrement]
+        [Column("id")]
         public int Id { get; set; }
 
         [NotNull] public string Name { get; set; }
