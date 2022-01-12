@@ -9,17 +9,35 @@ namespace FurnitureStore.repository
 {
     public class PromoRepository
     {
-        readonly SQLiteConnection _db;
-
         private static PromoRepository database;
+        private readonly SQLiteConnection _db;
 
         private PromoRepository(string fileName)
         {
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            string path = Path.Combine(docPath, fileName);
+            var docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var path = Path.Combine(docPath, fileName);
             _db = new SQLiteConnection(path);
 
             _db.CreateTable<Promo>();
+
+            _db.Insert(new Promo
+            {
+                Id = 1,
+                Name = "Name1",
+                Description = "Description1",
+                BeginDate = DateTime.Now,
+                EndDate = DateTime.Now + TimeSpan.FromDays(7),
+                PhotoPath = "PhotoPath1"
+            });
+            _db.Insert(new Promo
+            {
+                Id = 2,
+                Name = "Name2",
+                Description = "Description2",
+                BeginDate = DateTime.Now,
+                EndDate = DateTime.Now + TimeSpan.FromDays(3),
+                PhotoPath = "PhotoPath2"
+            });
         }
 
         public static PromoRepository GetInstance()

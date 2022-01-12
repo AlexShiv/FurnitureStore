@@ -7,12 +7,13 @@ namespace FurnitureStore.model
     [Table("Category")]
     public class Category
     {
-        [PrimaryKey, AutoIncrement, Column("id")]
+        [PrimaryKey]
+        [AutoIncrement]
+        [Column("id")]
         public int Id { get; set; }
 
         [NotNull] public string Name { get; set; }
-        
-        [OneToMany]
-        public List<Furniture> Furnitures { get; set; }
+
+        [OneToMany] public List<Furniture> Furnitures { get; set; }
     }
 }
