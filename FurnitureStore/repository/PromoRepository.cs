@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using FurnitureStore.config;
 using FurnitureStore.model;
 using SQLite;
+using SQLiteNetExtensions.Extensions;
 
 namespace FurnitureStore.repository
 {
@@ -20,24 +22,7 @@ namespace FurnitureStore.repository
 
             _db.CreateTable<Promo>();
 
-            _db.Insert(new Promo
-            {
-                Id = 1,
-                Name = "Name1",
-                Description = "Description1",
-                BeginDate = DateTime.Now,
-                EndDate = DateTime.Now + TimeSpan.FromDays(7),
-                PhotoPath = "PhotoPath1"
-            });
-            _db.Insert(new Promo
-            {
-                Id = 2,
-                Name = "Name2",
-                Description = "Description2",
-                BeginDate = DateTime.Now,
-                EndDate = DateTime.Now + TimeSpan.FromDays(3),
-                PhotoPath = "PhotoPath2"
-            });
+            FillDataBaseIfEmpty();
         }
 
         public static PromoRepository GetInstance()
@@ -70,5 +55,29 @@ namespace FurnitureStore.repository
 
             return _db.Insert(item);
         }
+        
+        private void FillDataBaseIfEmpty()
+        {
+            if (Fetch().Any()) return;
+            _db.Insert(new Promo
+            {
+                Id = 1,
+                Name = "Name1",
+                Description = "Description1",
+                BeginDate = DateTime.Now,
+                EndDate = DateTime.Now + TimeSpan.FromDays(7),
+                PhotoPath = "PhotoPath1"
+            });
+            _db.Insert(new Promo
+            {
+                Id = 2,
+                Name = "Name2",
+                Description = "Description2",
+                BeginDate = DateTime.Now,
+                EndDate = DateTime.Now + TimeSpan.FromDays(3),
+                PhotoPath = "PhotoPath2"
+            });
+        }
+
     }
 }

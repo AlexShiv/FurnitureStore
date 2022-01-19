@@ -1,4 +1,5 @@
 ﻿using System;
+using FurnitureStore.config;
 using FurnitureStore.repository;
 using Xamarin.Forms;
 

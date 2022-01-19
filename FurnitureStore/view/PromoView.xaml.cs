@@ -33,7 +33,7 @@ namespace FurnitureStore.view
                             {
                                 View = new StackLayout
                                 {
-                                    Padding = new Thickness(0, 5),
+                                    Padding = new Thickness(0, 10),
                                     Orientation = StackOrientation.Vertical,
                                     Children = { nameLabel, descriptionLabel }
                                 }
