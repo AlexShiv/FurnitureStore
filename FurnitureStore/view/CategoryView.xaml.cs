@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using FurnitureStore.config;
 using FurnitureStore.model;
 using FurnitureStore.repository;
 using Xamarin.Forms;
@@ -21,10 +22,14 @@ namespace FurnitureStore.view
                 ItemsSource = categories,
                 ItemTemplate = new DataTemplate(() =>
                 {
-                    var nameLabel = new Label { FontSize = 18 };
+                    var nameLabel = new Label
+                    {
+                        FontSize = 18,
+                        Margin = Constant.THICKNESS
+                    };
                     nameLabel.SetBinding(Label.TextProperty, "Name");
 
-                    return new ViewCell()
+                    return new ViewCell
                     {
                         View = new StackLayout()
                         {

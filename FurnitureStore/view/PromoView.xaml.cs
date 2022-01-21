@@ -1,4 +1,5 @@
-﻿using FurnitureStore.repository;
+﻿using FurnitureStore.config;
+using FurnitureStore.repository;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,10 +24,18 @@ namespace FurnitureStore.view
                         ItemsSource = promo,
                         ItemTemplate = new DataTemplate(() =>
                         {
-                            var nameLabel = new Label { FontSize = 18 };
+                            var nameLabel = new Label
+                            {
+                                FontSize = 20,
+                                Margin = Constant.THICKNESS
+                            };
                             nameLabel.SetBinding(Label.TextProperty, "Name");
-
-                            var descriptionLabel = new Label();
+                            // TODO возможно слишком большые отступы
+                            var descriptionLabel = new Label
+                            {
+                                FontSize = 15,
+                                Margin = Constant.THICKNESS
+                            };
                             descriptionLabel.SetBinding(Label.TextProperty, "Description");
 
                             return new ViewCell

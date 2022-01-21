@@ -1,3 +1,4 @@
+using FurnitureStore.model;
 using FurnitureStore.repository;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -51,6 +52,8 @@ namespace FurnitureStore.view
                     };
                 })
             };
+            listView.ItemSelected += ListView_ItemTapped;
+
             
             Content = new StackLayout
             {
@@ -59,6 +62,16 @@ namespace FurnitureStore.view
                     listView
                 }
             };
+        }
+        
+        private async void ListView_ItemTapped(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem is Furniture furniture)
+            {
+                ((ListView)sender).SelectedItem = null;
+                await Navigation.PushAsync(new FurnitureDetailView(furniture));
+            }
+
         }
     }
 }
