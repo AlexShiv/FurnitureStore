@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using FurnitureStore.config;
 using FurnitureStore.model;
 using SQLite;
@@ -50,6 +51,26 @@ namespace FurnitureStore.repository
             }
 
             return _db.Insert(item);
+        }
+
+        public void AddOrIncrementCount(Furniture furniture)
+        {
+            ShoppingCard shoppingCard;
+            try
+            {
+                shoppingCard = Fetch().First(card => card.FurnitureId == furniture.Id);
+                shoppingCard.Count++;
+                _db.Update(shoppingCard);
+            }
+            catch (InvalidOperationException)
+            {
+                shoppingCard = new ShoppingCard
+                {
+                    FurnitureId = furniture.Id,
+                    Count = 1
+                };
+                SaveItem(shoppingCard);
+            }
         }
     }
 }

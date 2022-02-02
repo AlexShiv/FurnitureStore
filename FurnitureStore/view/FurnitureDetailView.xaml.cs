@@ -1,8 +1,10 @@
 using System;
 using System.Globalization;
-using System.Threading.Tasks;
+using System.Linq;
 using FurnitureStore.config;
 using FurnitureStore.model;
+using FurnitureStore.repository;
+using FurnitureStore.viewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,41 +13,44 @@ namespace FurnitureStore.view
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FurnitureDetailView : ContentPage
     {
+        private readonly Furniture _furniture;
+
         public FurnitureDetailView(Furniture furniture)
         {
             InitializeComponent();
 
+            _furniture = furniture;
             var image = new Image
             {
                 HeightRequest = 200,
                 WidthRequest = 200,
-                Source = furniture.PhotoPath
+                Source = _furniture.PhotoPath
             };
 
             var nameLabel = new Label
             {
                 FontSize = 20,
-                Text = furniture.Name,
+                Text = _furniture.Name,
                 Margin = Constant.THICKNESS
             };
 
             var sizeHitLabel = new Label
             {
                 FontSize = 15,
-                Text = $"ВxДхШ: {furniture.Height}x{furniture.Length}x{furniture.Width}",
+                Text = $"ВxДхШ: {_furniture.Height}x{_furniture.Length}x{_furniture.Width}",
                 Margin = Constant.THICKNESS
             };
 
             var priceLabel = new Label
             {
                 FontSize = 15,
-                Text = furniture.Price.ToString(CultureInfo.CurrentCulture) + "руб.",
+                Text = _furniture.Price.ToString(CultureInfo.CurrentCulture) + "руб.",
                 Margin = Constant.THICKNESS
             };
             var descriptionLabel = new Label
             {
                 FontSize = 15,
-                Text = furniture.Description,
+                Text = _furniture.Description,
                 Margin = Constant.THICKNESS
             };
 
@@ -75,6 +80,19 @@ namespace FurnitureStore.view
 
         private async void OnButtonClicked(object sender, EventArgs e)
         {
+            var shoppingCardRepository = ShoppingCardRepository.GetInstance();
+            var furnitureRepository = FurnitureRepository.GetInstance();
+            
+            shoppingCardRepository.AddOrIncrementCount(_furniture);
+
+            var shoppingCards = shoppingCardRepository.Fetch().ToList();
+            shoppingCards.ForEach(card =>
+            {
+                card.Furniture = furnitureRepository.Fetch(card.FurnitureId);
+            });
+            
+            VmShoppingCard.UpdateList(shoppingCards);
+
             await DisplayAlert("Товар успешно добавлен в корзину", "Нажмите \"OK\" для продолжения", "OK");
         }
     }
