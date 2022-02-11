@@ -1,4 +1,8 @@
-﻿using FurnitureStore.viewModel;
+﻿using System;
+using System.Linq;
+using FurnitureStore.model;
+using FurnitureStore.repository;
+using FurnitureStore.viewModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -56,6 +60,25 @@ namespace FurnitureStore.view
                         };
                         image.SetBinding(Image.SourceProperty, "Furniture.PhotoPath");
 
+                        var plus = new Button()
+                        {
+                            HeightRequest = 40,
+                            WidthRequest = 40,
+                            Text = "+",
+                            FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Button)),
+                            BorderWidth = 1,
+                        };
+                        plus.Clicked += OnPlusButtonClicked;
+                        
+                        var minus = new Button()
+                        {
+                            HeightRequest = 40,
+                            WidthRequest = 40,
+                            Text = "-",
+                            FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Button)),
+                            BorderWidth = 1,
+                        };
+                        minus.Clicked += OnMinusButtonClicked;
 
                         var buttons = new StackLayout()
                         {
@@ -63,26 +86,13 @@ namespace FurnitureStore.view
                             Orientation = StackOrientation.Vertical,
                             Children =
                             {
-                                new Button()
-                                {
-                                    HeightRequest = 40,
-                                    WidthRequest = 40,
-                                    Text = "+",
-                                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Button)),
-                                    BorderWidth = 1,
-                                },
+                                plus,
                                 countLabel,
-                                new Button()
-                                {
-                                    HeightRequest = 40,
-                                    WidthRequest = 40,
-                                    Text = "-",
-                                    FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Button)),
-                                    BorderWidth = 1,
-                                }
+                                minus
                             },
                             Padding = new Thickness(10),
                         };
+                        
                         var row = new StackLayout()
                         {
                             // BackgroundColor = Color.Chocolate,
@@ -105,7 +115,6 @@ namespace FurnitureStore.view
                 BindingContext = cards
             };
 
-
             Content = new StackLayout
             {
                 Children =
@@ -113,6 +122,48 @@ namespace FurnitureStore.view
                     listView
                 }
             };
+        }
+
+        private void OnPlusButtonClicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            var row = (ShoppingCard) button.Parent.Parent.Parent.BindingContext;
+            
+            var shoppingCardRepository = ShoppingCardRepository.GetInstance();
+            var furnitureRepository = FurnitureRepository.GetInstance();
+
+            row.Count++;
+            shoppingCardRepository.SaveItem(row);
+            
+            var updatedCards = shoppingCardRepository.Fetch().ToList();
+            updatedCards.ForEach(card => { card.Furniture = furnitureRepository.Fetch(card.FurnitureId); });
+
+            VmShoppingCard.UpdateList(updatedCards);
+        }
+
+        private void OnMinusButtonClicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            var row = (ShoppingCard) button.Parent.Parent.Parent.BindingContext;
+            
+            var shoppingCardRepository = ShoppingCardRepository.GetInstance();
+            var furnitureRepository = FurnitureRepository.GetInstance();
+
+            row.Count--;
+
+            if (row.Count == 0)
+            {
+                shoppingCardRepository.Delete(row.Id);
+            }
+            else
+            {
+                shoppingCardRepository.SaveItem(row);
+            }
+            
+            var updatedCards = shoppingCardRepository.Fetch().ToList();
+            updatedCards.ForEach(card => { card.Furniture = furnitureRepository.Fetch(card.FurnitureId); });
+
+            VmShoppingCard.UpdateList(updatedCards);
         }
     }
 }

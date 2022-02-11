@@ -31,6 +31,11 @@ namespace FurnitureStore.viewModel
         {
             _cards.Clear();
             newList.ForEach(card => _cards.Add(card));
+        }        
+        public static void UpdateElement(ShoppingCard card)
+        {
+            var first = _cards.First(shoppingCard => shoppingCard.Equals(card));
+            first.Count = card.Count;
         }
     }
 }
