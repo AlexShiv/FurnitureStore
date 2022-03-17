@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using FurnitureStore.config;
 using FurnitureStore.model;
 using SQLite;
+using SQLiteNetExtensions.Extensions;
 
 namespace FurnitureStore.repository
 {
@@ -19,6 +21,7 @@ namespace FurnitureStore.repository
             _db = new SQLiteConnection(path);
 
             _db.CreateTable<City>();
+            FillDataBaseIfEmpty();
         }
 
         public static CityRepository GetInstance()
@@ -50,6 +53,29 @@ namespace FurnitureStore.repository
             }
 
             return _db.Insert(item);
+        }
+
+        private void FillDataBaseIfEmpty()
+        {
+            if (Fetch().Any()) return;
+            
+            _db.Insert(new City()
+            {
+                Id = 1,
+                Name = "Москва"
+            });           
+            
+            _db.Insert(new City()
+            {
+                Id = 2,
+                Name = "Санкт-Петербург"
+            });            
+            
+            _db.Insert(new City()
+            {
+                Id = 3,
+                Name = "Астрахань"
+            });
         }
     }
 }

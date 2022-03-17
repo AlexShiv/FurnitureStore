@@ -244,7 +244,7 @@ namespace FurnitureStore.view
                 furnitureRepository.SaveItem(furniture);
                 await DisplayAlert("Товар успешно добавлен", "Нажмите \"OK\" для продолжения", "OK");
                 
-                await Navigation.PushAsync(new FurnitureView(_categoryId));
+                await Navigation.PushAsync(new CategoryView());
 
             }
             catch (Exception exception)

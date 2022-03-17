@@ -69,7 +69,8 @@ namespace FurnitureStore.repository
                 Phone = "123",
                 Password = "qwer",
                 IsSubscribe = true,
-                Role = Constant.USER_ROLE
+                Role = Constant.USER_ROLE,
+                AddressId = 1
             });    
             
             _db.InsertWithChildren(new User()
@@ -82,7 +83,8 @@ namespace FurnitureStore.repository
                 Phone = "456",
                 Password = "qwer",
                 IsSubscribe = true,
-                Role = Constant.ADMIN_ROLE
+                Role = Constant.ADMIN_ROLE,
+                AddressId = 5
             });
         }
     }

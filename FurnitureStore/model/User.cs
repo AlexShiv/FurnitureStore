@@ -1,5 +1,6 @@
 ﻿using System;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace FurnitureStore.model
 {
@@ -20,5 +21,7 @@ namespace FurnitureStore.model
         [NotNull] public bool IsSubscribe { get; set; }
         
         [NotNull] public string Role { get; set; }
+        
+        [NotNull] [ForeignKey(typeof(Address))] public int AddressId { get; set; }
     }
 }
