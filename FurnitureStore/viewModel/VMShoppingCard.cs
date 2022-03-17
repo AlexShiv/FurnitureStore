@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using FurnitureStore.model;
 using FurnitureStore.repository;
+using Xamarin.Forms.Internals;
 
 namespace FurnitureStore.viewModel
 {
@@ -32,11 +33,20 @@ namespace FurnitureStore.viewModel
             _cards.Clear();
             newList.ForEach(card => _cards.Add(card));
             VmFullPrice.UpdateFullPrice();
-        }        
+        }
+
         public static void UpdateElement(ShoppingCard card)
         {
             var first = _cards.First(shoppingCard => shoppingCard.Equals(card));
             first.Count = card.Count;
+        }
+
+        public static void DropList()
+        {
+            _cards.Clear();
+            var shoppingCardRepository = ShoppingCardRepository.GetInstance();
+            shoppingCardRepository.Fetch().ForEach(card => shoppingCardRepository.Delete(card.Id));
+            VmFullPrice.UpdateFullPrice();
         }
     }
 }

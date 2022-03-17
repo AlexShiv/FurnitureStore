@@ -1,6 +1,7 @@
 ﻿using System;
 using FurnitureStore.config;
 using FurnitureStore.repository;
+using FurnitureStore.view;
 using Xamarin.Forms;
 
 namespace FurnitureStore
@@ -21,7 +22,7 @@ namespace FurnitureStore
                 AddressRepository.GetInstance();
                 FurnitureRepository.GetInstance();
 
-                MainPage = new MainPage();
+                MainPage = new LoginView();
             }
             catch (Exception e)
             {

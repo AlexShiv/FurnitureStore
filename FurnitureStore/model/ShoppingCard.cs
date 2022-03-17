@@ -20,5 +20,9 @@ namespace FurnitureStore.model
         [NotNull] public double FullPrise { get; set; }
 
         [OneToOne] public Furniture Furniture { get; set; }
+        
+        [NotNull]
+        [ForeignKey(typeof(User))]
+        public int UserId { get; set; }
     }
 }
