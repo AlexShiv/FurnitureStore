@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -22,7 +23,6 @@ namespace FurnitureStore.viewModel
 
                 _cards = null;
                 _cards = new ObservableCollection<ShoppingCard>(updatedCards);
-
                 return _cards;
             }
         }
@@ -31,6 +31,7 @@ namespace FurnitureStore.viewModel
         {
             _cards.Clear();
             newList.ForEach(card => _cards.Add(card));
+            VmFullPrice.UpdateFullPrice();
         }        
         public static void UpdateElement(ShoppingCard card)
         {

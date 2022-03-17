@@ -60,6 +60,7 @@ namespace FurnitureStore.repository
             {
                 shoppingCard = Fetch().First(card => card.FurnitureId == furniture.Id);
                 shoppingCard.Count++;
+                shoppingCard.FullPrise = shoppingCard.Count * furniture.Price;
                 _db.Update(shoppingCard);
             }
             catch (InvalidOperationException)
@@ -67,7 +68,8 @@ namespace FurnitureStore.repository
                 shoppingCard = new ShoppingCard
                 {
                     FurnitureId = furniture.Id,
-                    Count = 1
+                    Count = 1,
+                    FullPrise = furniture.Price
                 };
                 SaveItem(shoppingCard);
             }
