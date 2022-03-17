@@ -18,5 +18,7 @@ namespace FurnitureStore.model
         [NotNull] public string Phone { get; set; }
         [NotNull] public string Password { get; set; }
         [NotNull] public bool IsSubscribe { get; set; }
+        
+        [NotNull] public string Role { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 using SQLiteNetExtensions.Attributes;
 
 namespace FurnitureStore.model

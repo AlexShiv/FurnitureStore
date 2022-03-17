@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using FurnitureStore.model;
 using FurnitureStore.repository;
 using FurnitureStore.viewModel;
@@ -40,6 +41,8 @@ namespace FurnitureStore.view
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
             };
+            clearShopingCard.Clicked += OnButtonClicked;
+
 
             var footer = new StackLayout()
             {
@@ -56,6 +59,12 @@ namespace FurnitureStore.view
                     listView, footer
                 }
             };
+        }
+
+        private async void OnButtonClicked(object sender, EventArgs e)
+        {
+            VmShoppingCard.DropList();
+            await DisplayAlert("Заказ успешно создан", $"Номер вашего заказа: {Guid.NewGuid().ToString()}\n Наш менеджер свяжется с вами для утонения деталей оплаты и доставки", "OK");
         }
 
 

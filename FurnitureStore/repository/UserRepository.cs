@@ -68,7 +68,21 @@ namespace FurnitureStore.repository
                 Birthday = new DateTime(1990,1,1),
                 Phone = "123",
                 Password = "qwer",
-                IsSubscribe = true
+                IsSubscribe = true,
+                Role = Constant.USER_ROLE
+            });    
+            
+            _db.InsertWithChildren(new User()
+            {
+                Id = 2,
+                FirstName = "Менеджер",
+                LastName = "Менеджеров",
+                Patronymic = "Менедрежович",
+                Birthday = new DateTime(1990,1,1),
+                Phone = "456",
+                Password = "qwer",
+                IsSubscribe = true,
+                Role = Constant.ADMIN_ROLE
             });
         }
     }

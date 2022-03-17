@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using FurnitureStore.config;
 using FurnitureStore.model;
+using FurnitureStore.viewModel;
 using SQLite;
 
 namespace FurnitureStore.repository
@@ -29,7 +30,7 @@ namespace FurnitureStore.repository
 
         public IEnumerable<ShoppingCard> Fetch()
         {
-            return _db.Table<ShoppingCard>().ToList();
+            return _db.Table<ShoppingCard>().ToList().FindAll(card => card.UserId == VmUser.User.Id);
         }
 
         public ShoppingCard Fetch(int id)
@@ -65,11 +66,16 @@ namespace FurnitureStore.repository
             }
             catch (InvalidOperationException)
             {
+                if (VmUser.User == null)
+                {
+                    
+                }
                 shoppingCard = new ShoppingCard
                 {
                     FurnitureId = furniture.Id,
                     Count = 1,
-                    FullPrise = furniture.Price
+                    FullPrise = furniture.Price,
+                    UserId = VmUser.User.Id
                 };
                 SaveItem(shoppingCard);
             }

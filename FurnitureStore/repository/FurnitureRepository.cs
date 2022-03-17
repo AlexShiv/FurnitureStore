@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -85,6 +85,18 @@ namespace FurnitureStore.repository
                 Length = 2,
                 Width = 2,
                 Price = 2000,
+                CategoryId = 1,
+                PhotoPath = "divan2.png"
+            });               
+            _db.InsertWithChildren(new Furniture
+            {
+                Id = 3,
+                Name = "Divan3",
+                Description = "Описание дивана3",
+                Height = 3,
+                Length = 3,
+                Width = 3,
+                Price = 3000,
                 CategoryId = 1,
                 PhotoPath = "divan2.png"
             });            
