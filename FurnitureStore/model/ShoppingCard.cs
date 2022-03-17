@@ -16,6 +16,8 @@ namespace FurnitureStore.model
         public int FurnitureId { get; set; }
 
         [NotNull] public int Count { get; set; }
+        
+        [NotNull] public double FullPrise { get; set; }
 
         [OneToOne] public Furniture Furniture { get; set; }
     }

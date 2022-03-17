@@ -62,8 +62,8 @@ namespace FurnitureStore.repository
             _db.Insert(new Promo
             {
                 Id = 1,
-                Name = "Name1",
-                Description = "Description1",
+                Name = "День рождения!",
+                Description = "Предоставляем скижку 10% за неделю до и после дня рождения",
                 BeginDate = DateTime.Now,
                 EndDate = DateTime.Now + TimeSpan.FromDays(7),
                 PhotoPath = "PhotoPath1"
@@ -71,8 +71,8 @@ namespace FurnitureStore.repository
             _db.Insert(new Promo
             {
                 Id = 2,
-                Name = "Name2",
-                Description = "Description2",
+                Name = "1 + 1 = 3",
+                Description = "При покупке дивана и кресла, второе кресло в подарок",
                 BeginDate = DateTime.Now,
                 EndDate = DateTime.Now + TimeSpan.FromDays(3),
                 PhotoPath = "PhotoPath2"
