@@ -14,13 +14,13 @@ namespace FurnitureStore
             {
                 InitializeComponent();
 
-                UserRepository.GetInstance();
                 PromoRepository.GetInstance();
                 CategoryRepository.GetInstance();
-                ShoppingCardRepository.GetInstance();
+                FurnitureRepository.GetInstance();
                 CityRepository.GetInstance();
                 AddressRepository.GetInstance();
-                FurnitureRepository.GetInstance();
+                UserRepository.GetInstance();
+                ShoppingCardRepository.GetInstance();
 
                 MainPage = new LoginView();
             }

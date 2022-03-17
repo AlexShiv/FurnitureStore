@@ -3,7 +3,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using FurnitureStore.model;
 using FurnitureStore.repository;
+using FurnitureStore.viewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace FurnitureStore.view
@@ -11,7 +13,6 @@ namespace FurnitureStore.view
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PersonalAccount : ContentPage
     {
-        
         private readonly User _user;
         private Entry _lastNameEntry;
         private Entry _firstNameEntry;
@@ -19,13 +20,24 @@ namespace FurnitureStore.view
         private DatePicker _birthdayDatePicker;
         private Entry _phoneEntry;
         private Switch _subscribeSwitch;
+        private string _city;
+        private string _address;
+        private Picker _addressPicker;
+        private Picker _cityPicker;
 
         public PersonalAccount()
         {
             InitializeComponent();
 
             var userRepository = UserRepository.GetInstance();
-            _user = userRepository.Fetch().First();
+            var cityRepository = CityRepository.GetInstance();
+            var addressRepository = AddressRepository.GetInstance();
+
+            _user = VmUser.User;
+            var cities = cityRepository.Fetch();
+            var addresses = addressRepository.Fetch().ToList();
+            cities.ForEach(city => city.Addresses = addresses.FindAll(address => address.CityId == city.Id).ToList());
+
 
             _lastNameEntry = new Entry()
             {
@@ -88,7 +100,7 @@ namespace FurnitureStore.view
                     new Label()
                     {
                         HorizontalOptions = LayoutOptions.StartAndExpand,
-                        FontSize = 18, 
+                        FontSize = 18,
                         Text = "Отчество"
                     },
                     _patronomicEntry
@@ -101,7 +113,6 @@ namespace FurnitureStore.view
                 HorizontalOptions = LayoutOptions.Center,
                 Date = _user.Birthday,
                 WidthRequest = 150,
-                        
             };
             var birthday = new StackLayout()
             {
@@ -140,6 +151,54 @@ namespace FurnitureStore.view
                 }
             };
 
+            _cityPicker = new Picker()
+            {
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                Title = "Город",
+                WidthRequest = 150,
+                VerticalTextAlignment = TextAlignment.Center
+            };
+            cities.Select(city => city.Name).ToList()
+                .ForEach(s => _cityPicker.Items.Add(s));
+            _cityPicker.SelectedIndexChanged += picker_SelectedIndexChanged;
+            var cityLayout = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal,
+                Children =
+                {
+                    new Label()
+                    {
+                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                        FontSize = 18,
+                        Text = "Город"
+                    },
+                    _cityPicker
+                }
+            };
+
+            _addressPicker = new Picker()
+            {
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                Title = "Адрес",
+                WidthRequest = 150,
+                VerticalTextAlignment = TextAlignment.Center
+            };
+
+            var addressLayout = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal,
+                Children =
+                {
+                    new Label()
+                    {
+                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                        FontSize = 18,
+                        Text = "Адрес"
+                    },
+                    _addressPicker
+                }
+            };
+
             _subscribeSwitch = new Switch()
             {
                 IsToggled = _user.IsSubscribe,
@@ -165,7 +224,7 @@ namespace FurnitureStore.view
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             saveUserData.Clicked += OnButtonClicked;
-            
+
             Content = new StackLayout()
             {
                 Orientation = StackOrientation.Vertical,
@@ -178,21 +237,38 @@ namespace FurnitureStore.view
                     birthday,
                     phone,
                     subscribe,
+                    cityLayout,
+                    addressLayout,
                     saveUserData
                 }
             };
+        }
+
+        private void picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var cityName = _cityPicker.Items[_cityPicker.SelectedIndex];
+            var addressRepository = AddressRepository.GetInstance();
+            var cityRepository = CityRepository.GetInstance();
+            _addressPicker.Items.Clear();
+
+            var city = cityRepository.Fetch().First(c => c.Name == cityName);
+            addressRepository.Fetch().ToList().FindAll(address => address.CityId == city.Id)
+                .ForEach(address => _addressPicker.Items.Add(address.Name));
         }
 
         private async void OnButtonClicked(object sender, EventArgs e)
         {
             try
             {
+                var addresses = AddressRepository.GetInstance().Fetch().ToList();
                 _user.LastName = _lastNameEntry.Text;
                 _user.FirstName = _firstNameEntry.Text;
                 _user.Patronymic = _patronomicEntry.Text;
                 _user.Birthday = _birthdayDatePicker.Date;
                 _user.Phone = _phoneEntry.Text;
                 _user.IsSubscribe = _subscribeSwitch.IsToggled;
+                _user.AddressId = addresses.Find(address =>
+                    address.Name == _addressPicker.Items[_addressPicker.SelectedIndex]).Id;
 
                 var userRepository = UserRepository.GetInstance();
                 userRepository.SaveItem(_user);
